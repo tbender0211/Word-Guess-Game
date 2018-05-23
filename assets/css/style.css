@@ -1,0 +1,16 @@
+body {
+    background-image: url("../images/org.jpg")
+}
+
+.container {
+    background-color: black;
+    height: 85%;
+    width: 50%;
+    margin-top: 50px;
+    text-align: center;
+}
+
+p {
+    font-family: 'Metamorphous', cursive;
+    color: white;
+}

@@ -8,9 +8,15 @@ body {
     width: 50%;
     margin-top: 50px;
     text-align: center;
+    border: solid 5px maroon;
+    border-radius: 25px;
 }
 
 p {
     font-family: 'Metamorphous', cursive;
+    color: white;
+}
+
+#random-word {
     color: white;
 }

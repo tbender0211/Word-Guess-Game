@@ -25,7 +25,9 @@ var usedLetters = [];
 
 var wrongCount = 0;
 
-document.onkeyup = function(event) {
+var userGuess;
+
+document.onkeyup = function (event) {
     var userGuess = event.key.toLowerCase();
 }
 
@@ -35,7 +37,6 @@ var computerWord = warcraftWords[Math.floor(Math.random()*warcraftWords.length)]
 
 //Use onkeyup to detect user guess
 //Use a for loop and charAt to determine whether user guess matches letter in computer guess, cycling through length of word
-
 
 for (var i = 0; i < computerWord.length; i++){
 
@@ -50,15 +51,18 @@ for (var i = 0; i < computerWord.length; i++){
     wordDiv.textContent = randomWords.join("");
 }
 
-for (var j=0; j < computerWord.length; i++) {
+document.getElementById("wrong-count").textContent = "Incorrect Guesses: " + wrongCount;
+document.getElementById("letters").textContent = "Letters Used:" + usedLetters.join("");
 
-    if (computerWord[j] === userGuess){
-        randomWords[i] = computerWord[j];
-        wordDiv.textContent = randomWords.join("");
+function userGuess(letter){
+}
+//In this if function, need to figure out what to put where "onkeyup" is
+if (computerWord.indexOf(userGuess >= 0)) {
+    for (var i=0; i < computerWord.length; i++) {
+
+        if (computerWord[i] === onkeyup() ) {
+          randomWords[i] === computerWord[i];
     }
-    
-    else {
-        wrongCount++;
-        document.getElementById("letters").textContent = userGuess;
-    }
+}
+    wordDiv.textContent = randomWords.join("");
 }

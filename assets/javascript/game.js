@@ -26,7 +26,6 @@ var wrongCount = 0;
 var wordDiv = document.getElementById("random-word");
 
 var computerWord = warcraftWords[Math.floor(Math.random()*warcraftWords.length)];
-console.log(computerWord);
 
 //Use onkeyup to detect user guess
 //Use a for loop and charAt to determine whether user guess matches letter in computer guess, cycling through length of word
@@ -44,9 +43,11 @@ document.onkeyup = function (event) {
 userGuess();
 
 function userGuess(letter) { 
-
+    
     for (j=0; j < computerWord.length; j++); {
-                
+        
+        console.log(computerWord);
+            
         if (computerWord[j] == letter) {
                 randomWords[j] = computerWord[j];
                 usedLetters.push(letter);

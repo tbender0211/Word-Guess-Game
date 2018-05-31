@@ -15,16 +15,27 @@ body {
 p {
     font-family: 'Metamorphous', cursive;
     color: white;
+    font-size: 35px;
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 #random-word {
     color: white;
+    font-family: 'Metamorphous', cursive;
+    margin-bottom: 50px;
+    font-size: 30px;
 }
 
 #wrong-count {
     color: white;
+    font-family: 'Metamorphous', cursive;
+    margin-bottom: 10px;
+    font-size: 20px;
 }
 
 #letters {
     color: white;
+    font-family: 'Metamorphous', cursive;
+    font-size: 20px;
 }

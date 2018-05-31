@@ -6,71 +6,66 @@ var warcraftWords = ["jaina",
                     "draenor", 
                     "pandaria", 
                     "kalimdor", 
-                    "eastern kingdoms", 
-                    "northrend", 
-                    "broken isles", 
+                    "northrend",  
                     "azeroth", 
                     "orgrimmar", 
                     "stormwind", 
                     "dalaran",
                     "ironforge", 
                     "thunderbluff", 
-                    "argus"]
+                    "argus"];
 
 
 
-var randomWords = [];
+var randomWords = [""];
 
-var usedLetters = [];
+var usedLetters = [""];
 
 var wrongCount = 0;
-
-document.onkeyup = function (event) {
-    var userGuess = userInput(event.key.toLowerCase());
-    }
-
 
 var wordDiv = document.getElementById("random-word");
 
 var computerWord = warcraftWords[Math.floor(Math.random()*warcraftWords.length)];
+console.log(computerWord);
 
 //Use onkeyup to detect user guess
 //Use a for loop and charAt to determine whether user guess matches letter in computer guess, cycling through length of word
 
 for (i = 0; i < computerWord.length; i++){
-
-    if (computerWord[i] === ' ') {
-    randomWords.push(' ');
-    }
-
-    else {
-        randomWords.push('_ ');
-    }
+    randomWords[i] = "_ ";
 
     wordDiv.textContent = randomWords.join("");
 }
 
-document.getElementById("wrong-count").textContent = "Incorrect Guesses: " + wrongCount;
-document.getElementById("letters").textContent = "Letters Used: " + usedLetters.join("");
+document.onkeyup = function (event) {
+    userGuess(event.key);
+    }
 
+userGuess();
 
-//Need to figure out how to write userGuess to randomWords array
-document.onkeyup = function(event) {
+function userGuess(letter) { 
 
-        var userGuess = event.key.toLowerCase();
-        console.log(userGuess);
-
-        for (i=0; i < computerWord.length; i++); {
-
-            if (computerWord[i] == userGuess) {
-                userGuess == randomWords[i];
-                randomWords.push(computerWord[i]);
+    for (j=0; j < computerWord.length; j++); {
+                
+        if (computerWord[j] == letter) {
+                randomWords[j] = computerWord[j];
+                usedLetters.push(letter);
+                document.getElementById("letters").innerHTML = "Letters Used: " + usedLetters.join(" ");
+                document.getElementById("wrong-count").innerHTML = "Incorrect Guesses: " + wrongCount;
                 wordDiv.textContent = randomWords.join("");
-            }
-    
-            else {
+        }
+
+        else {
+                usedLetters.push(letter);
+                document.getElementById("letters").innerHTML = "Letters Used: " + usedLetters.join(" ");
                 wrongCount++;
+                console.log(wrongCount);
+                document.getElementById("wrong-count").innerHTML = "Incorrect Guesses: " + wrongCount;
+                
+
+        
         }
     }
-    }
+    
+}
 

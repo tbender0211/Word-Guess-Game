@@ -2,6 +2,13 @@ body {
     background-image: url("../images/org.jpg")
 }
 
+footer {
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+}
+
 .container {
     background-color: black;
     height: 85%;
@@ -38,4 +45,31 @@ p {
     color: white;
     font-family: 'Metamorphous', cursive;
     font-size: 20px;
+}
+
+#music {
+    padding-top: 100px;
+}
+
+@media screen and (max-width: 980px) {
+
+    .container {
+       width: 66%;
+       height: 150%;
+   }
+}
+   
+@media screen and (max-width: 768px) {
+    
+    .container {
+        width: 80%;
+        height: 150%;
+    }
+}
+   
+   @media screen and (max-width: 640px) {
+    .container {
+        width: 90%;
+        height: 150%;
+    }
 }

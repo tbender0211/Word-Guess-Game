@@ -1,3 +1,4 @@
+//Array for randomly generated word
 var warcraftWords = ["jaina", 
                     "thrall", 
                     "sylvanas", 
@@ -15,8 +16,7 @@ var warcraftWords = ["jaina",
                     "thunderbluff", 
                     "argus"];
 
-
-
+//Variables
 var randomWords = [""];
 
 var usedLetters = [""];
@@ -27,41 +27,46 @@ var wordDiv = document.getElementById("random-word");
 
 var computerWord = warcraftWords[Math.floor(Math.random()*warcraftWords.length)];
 
-//Use onkeyup to detect user guess
-//Use a for loop and charAt to determine whether user guess matches letter in computer guess, cycling through length of word
-
+//for loop to show all characters as spaces
 for (i = 0; i < computerWord.length; i++){
     randomWords[i] = "_ ";
 
     wordDiv.textContent = randomWords.join("");
 }
 
+//Function to detect user input of letter keys only
 document.onkeyup = function (event) {
-    userGuess(event.key);
+
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+    
+        userGuess(event.key);
     }
+}
 
 userGuess();
 
+//Attempt at a function to fill in hangman blanks
 function userGuess(letter) { 
     
     for (j=0; j < computerWord.length; j++); {
         
         console.log(computerWord);
-            
+        usedLetters.push(letter);
+        document.getElementById("letters").innerHTML = "Letters Used: " + usedLetters.join(" ");
+        document.getElementById("wrong-count").innerHTML = "Incorrect Guesses: " + wrongCount;    
+
+        //This is where things don't work *shrug*
         if (computerWord[j] == letter) {
-                randomWords[j] = computerWord[j];
-                usedLetters.push(letter);
-                document.getElementById("letters").innerHTML = "Letters Used: " + usedLetters.join(" ");
-                document.getElementById("wrong-count").innerHTML = "Incorrect Guesses: " + wrongCount;
-                wordDiv.textContent = randomWords.join("");
+
+            randomWords[j] = computerWord[j];
+            wordDiv.textContent = randomWords.join("");
         }
 
         else {
-                usedLetters.push(letter);
-                document.getElementById("letters").innerHTML = "Letters Used: " + usedLetters.join(" ");
-                wrongCount++;
-                console.log(wrongCount);
-                document.getElementById("wrong-count").innerHTML = "Incorrect Guesses: " + wrongCount;
+
+            wrongCount++;
+            console.log(wrongCount);
+            
                 
 
         

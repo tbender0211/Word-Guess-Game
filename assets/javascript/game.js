@@ -17,15 +17,17 @@ var warcraftWords = ["jaina",
                     "argus"];
 
 //Variables
-var randomWords = [""];
+var randomWords = [];
 
-var usedLetters = [""];
+var usedLetters = [];
 
 var wrongCount = 0;
 
 var wordDiv = document.getElementById("random-word");
 
-var computerWord = warcraftWords[Math.floor(Math.random()*warcraftWords.length)];
+var number = Math.floor(Math.random()*warcraftWords.length);
+
+var computerWord = warcraftWords[number];
 
 //for loop to show all characters as spaces
 for (var i = 0; i < computerWord.length; i++){
@@ -34,41 +36,42 @@ for (var i = 0; i < computerWord.length; i++){
     wordDiv.textContent = randomWords.join("");
 }
 
+
 //Function to detect user input of letter keys only
 document.onkeyup = function (event) {
 
     if (event.keyCode >= 65 && event.keyCode <= 90) {
+        console.log(event.key);
     
-        userGuess(event.key);
+        userGuess(event.key, randomWords);
     }
 }
 
-userGuess();
 
-//Attempt at a function to fill in hangman blanks
-function userGuess(letter) { 
+//Call function to fill in hangman blanks
+function userGuess(letter, randomWords) { 
+
+    //console.log(computerWord.length);
+    //console.log(randomWords.length);
+    usedLetters.push(letter);
+    document.getElementById("letters").innerHTML = "Letters Used: " + usedLetters.join(" ");
     
-    for (var j=0; j < computerWord.length; j++); {
-        
-        console.log(computerWord);
-        usedLetters.push(letter);
-        document.getElementById("letters").innerHTML = "Letters Used: " + usedLetters.join(" ");
-        document.getElementById("wrong-count").innerHTML = "Incorrect Guesses: " + wrongCount;    
+    if (computerWord.indexOf(letter) != -1) {
 
-        //This is where things don't work *shrug*
-        if (computerWord[j] === letter) {
+        var index = computerWord.indexOf(letter);
+        randomWords[index] = letter;
 
-            randomWords[j] = computerWord[j];
-            wordDiv.textContent = randomWords.join("");
-        }
-
-        else {
-
-            wrongCount++;
-            console.log(wrongCount);
-                    
-        }
+        wordDiv.textContent = randomWords.join("");
     }
+
+    else {
+
+        wrongCount++;
+        console.log(wrongCount);
+                
+    }
+
+    document.getElementById("wrong-count").innerHTML = "Incorrect Guesses: " + wrongCount;
 
 }
 
